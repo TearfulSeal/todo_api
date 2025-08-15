@@ -35,7 +35,7 @@ func (r *TaskRepository) GetByUserID(userId uint) ([]models.Task, error){
 	}
 	return tasks,nil 
 }
-func (r *TaskRepository) GetBySatus(status,userId string) ([]models.Task,error){
+func (r *TaskRepository) GetBySatus(status string,userId uint) ([]models.Task,error){
 	var tasks []models.Task
 	query := r.db.Where("status = ? AND user_id = ?",status,userId)
 	if err := query.Find(&tasks).Error;err!=nil{
